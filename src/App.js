@@ -6,10 +6,9 @@ import TaskFilter from './TaskFilter/TaskFilter';
 import TaskViewer from './TaskViewer/TaskViewer';
 import TaskSearch from './TaskSearch/TaskSearch';
 import TaskCreator from './TaskCreator/TaskCreator';
-import taskList from './state';
 
 
-function App() {
+function App(props) {
     return (
         <>
             <Header></Header>
@@ -20,7 +19,7 @@ function App() {
                     </TaskSearch>
                     <TaskCreator>
                     </TaskCreator>
-                    <TaskViewer taskList={taskList}>
+                    <TaskViewer>
                     </TaskViewer>
                 </div>
             </div>

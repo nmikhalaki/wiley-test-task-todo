@@ -1,8 +1,8 @@
 import React from "react";
 import './footer.css';
 
-const Footer = () => {
-    const currentDate = new Date
+const Footer = (props) => {
+    const currentDate = new Date()
     const currentYear = currentDate.getUTCFullYear()
     return (
         <footer className='footer'>

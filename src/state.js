@@ -13,22 +13,7 @@ const taskList = [
         title: '#3 task',
         description: 'Edit a task',
         completed: false
-    },
-    {
-        title: '#4 task',
-        description: 'Mark a task as completed',
-        completed: false
-    },
-    {
-        title: '#5 task',
-        description: 'Remove a task',
-        completed: false
-    },
-    {
-        title: '#6 task',
-        description: 'Persist tasks between working sessions',
-        completed: false
-    },
+    }
 ]
 
 export default taskList;

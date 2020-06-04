@@ -1,5 +1,6 @@
 import React from "react";
 import './taskCreator.css'
+// import FiberNewIcon from '@material-ui/icons/FiberNew';
 
 class TaskCreator extends React.Component {
     constructor(props) {
@@ -25,13 +26,10 @@ class TaskCreator extends React.Component {
     }
     handleSubmit(event) {
         event.preventDefault()
-        alert(this.state.title)
-        alert(this.state.description)
-        this.setState({
-            title: '',
-            description: '',
-            completed: false
-        })
+        const { title, description, completed } = this.state;
+        const taskList = JSON.parse(localStorage.taskList)
+        taskList.push(this.state)
+        localStorage.setItem('taskList', JSON.stringify(taskList))
     }
     render() {
         return(

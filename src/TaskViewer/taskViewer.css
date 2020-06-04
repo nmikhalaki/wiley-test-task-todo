@@ -14,8 +14,19 @@
 }
 
 .task-item {
+    display: flex;
+    flex-direction: row;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin: 5px;
+}
+
+.task-item-card {
+    min-width: 400px;
+    margin: 5px;
+}
+.task-item-option {
+    min-width: 50px;
     margin: 5px;
 }
 

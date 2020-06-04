@@ -4,6 +4,15 @@ import './reset.css';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import taskList from './state';
+
+if (!localStorage.getItem('taskList')) {
+    const tasks = []
+    taskList.forEach((task, index) => {
+        tasks.push(task)
+    })
+    localStorage.setItem('taskList', JSON.stringify(tasks))
+}
 
 ReactDOM.render(
   <React.StrictMode>
