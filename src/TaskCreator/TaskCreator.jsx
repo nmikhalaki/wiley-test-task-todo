@@ -5,6 +5,7 @@ import './taskCreator.css'
 class TaskCreator extends React.Component {
     constructor(props) {
         super(props);
+        this.taskList = JSON.parse(localStorage.getItem('taskList'))
         this.state = {
             title: '',
             description: '',
@@ -25,11 +26,10 @@ class TaskCreator extends React.Component {
         })
     }
     handleSubmit(event) {
-        event.preventDefault()
-        const { title, description, completed } = this.state;
-        const taskList = JSON.parse(localStorage.taskList)
-        taskList.push(this.state)
-        localStorage.setItem('taskList', JSON.stringify(taskList))
+        // event.preventDefault()
+    // const taskList = JSON.parse(localStorage.taskList)
+        this.taskList.push(this.state)
+        localStorage.setItem('taskList', JSON.stringify(this.taskList))
         this.setState({
             title: '',
             description: '',
