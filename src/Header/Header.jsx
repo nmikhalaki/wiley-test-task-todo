@@ -1,5 +1,5 @@
 import React from "react";
-import './header.css'
+import './header.css';
 
 const Header = () => {
     const currentDate = new Date
@@ -17,4 +17,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default Header;
