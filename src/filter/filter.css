@@ -1,0 +1,17 @@
+.filter-container {
+    background-color: whitesmoke;
+}
+
+.filter-container li {
+    font-size: 12px;
+}
+
+.filter-container p {
+    margin: .4rem;
+}
+.filter-container input {
+    margin: .4rem;
+}
+.filter-container label {
+    margin: 0 .4rem 0 0;
+}
