@@ -30,6 +30,11 @@ class TaskCreator extends React.Component {
         const taskList = JSON.parse(localStorage.taskList)
         taskList.push(this.state)
         localStorage.setItem('taskList', JSON.stringify(taskList))
+        this.setState({
+            title: '',
+            description: '',
+            completed: false
+        })
     }
     render() {
         return(

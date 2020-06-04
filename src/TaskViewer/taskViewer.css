@@ -39,3 +39,8 @@
     font-size: 12px;
     margin: 5px;
 }
+
+.task-item-status {
+    font-size: 10px;
+    margin: 5px;
+}

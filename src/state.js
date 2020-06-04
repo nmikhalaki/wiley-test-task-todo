@@ -2,7 +2,7 @@ const taskList = [
     {
         title: '#1 task',
         description: 'Add a task with title',
-        completed: false
+        completed: true
     },
     {
         title: '#2 task',

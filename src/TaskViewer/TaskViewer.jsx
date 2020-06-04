@@ -31,6 +31,9 @@ const TaskViewer = (props) => {
                     <div className='task-item-description'>
                         {task.description}
                     </div>
+                    <div className='task-item-status'>
+                        Completed: {task.completed.toString()}
+                    </div>
                 </div>
                 <div className='task-item-option'>
                     <Button size='small' variant='outlined' color='primary' onClick={handleClickDone}>Done</Button>
