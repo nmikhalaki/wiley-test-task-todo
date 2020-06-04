@@ -1,20 +1,28 @@
 import React from 'react';
 import './App.css';
-import Footer from './footer/Footer';
-import Header from './header/Header';
-import Filter from './filter/Filter';
-import Description from './description/Description';
-import Manager from './manager/Manager';
+import Footer from './Footer/Footer';
+import Header from './Header/Header';
+import TaskFilter from './TaskFilter/TaskFilter';
+import TaskViewer from './TaskViewer/TaskViewer';
+import TaskSearch from './TaskSearch/TaskSearch';
+import TaskCreator from './TaskCreator/TaskCreator';
+import taskList from './state';
 
 
 function App() {
     return (
         <>
             <Header></Header>
-            <div className='container'>
-                <Filter></Filter>
-                <Manager></Manager>
-                <Description></Description>
+            <div className='app'>
+                <TaskFilter></TaskFilter>
+                <div className='app-content'>
+                    <TaskSearch>
+                    </TaskSearch>
+                    <TaskCreator>
+                    </TaskCreator>
+                    <TaskViewer taskList={taskList}>
+                    </TaskViewer>
+                </div>
             </div>
             <Footer></Footer>
         </>

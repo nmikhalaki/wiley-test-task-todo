@@ -1,9 +1,9 @@
 import React from "react";
-import './filter.css'
+import './taskFilter.css'
 
-const Filter = () => {
+const TaskFilter = () => {
     return (
-        <div className='filter-container'>
+        <div className='task-filter-container'>
             <p>Filters:</p>
             <div>
                 <input type="radio" id="all" name="filter" value="all" />
@@ -21,4 +21,4 @@ const Filter = () => {
     )
 }
 
-export default Filter;
+export default TaskFilter;

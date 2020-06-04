@@ -1,0 +1,30 @@
+.manager-label {
+    min-width: 100px;
+}
+
+.task-manager-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+}
+
+.task-list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.task-item-title {
+    font-size: 16px;
+    margin: 5px;
+}
+
+.task-item-description {
+    font-size: 12px;
+    margin: 5px;
+}

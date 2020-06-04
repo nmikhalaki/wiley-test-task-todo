@@ -1,9 +1,9 @@
 import React from "react";
-import './manager.css'
+import './taskCreator.css'
 
-const Manager = () => {
+const TaskCreator = () => {
     return (
-        <div className='manager-container'>
+        <div className='creator-container'>
             <div>
                 <label className="manager-label" htmlFor="create-new-task">Title</label>
                 <input type="text" id="task-title" name="create-new-task" />
@@ -19,4 +19,4 @@ const Manager = () => {
     )
 }
 
-export default Manager;
+export default TaskCreator;
