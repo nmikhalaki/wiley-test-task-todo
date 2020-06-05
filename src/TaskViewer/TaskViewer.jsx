@@ -6,47 +6,11 @@ import EditIcon from '@material-ui/icons/Edit';
 class TaskViewer extends React.Component {
     constructor(props) {
         super(props);
-        this.taskList = JSON.parse(localStorage.getItem('taskList'))
-        this.state = {
-            taskList: this.taskList
-        }
-        this.handleClickDelete = this.handleClickDelete.bind(this);
-        this.handleClickEdit = this.handleClickEdit.bind(this);
-        this.handleClickDone = this.handleClickDone.bind(this);
-    }
-    handleClickDelete = (index, e) => {
-        this.taskList.splice(index, 1)
-        localStorage.setItem('taskList', JSON.stringify(this.taskList))
-        this.setState({
-            taskList: this.taskList
-        })
-    }
-    handleClickEdit = (event) => {
-        alert(event.target.value)
-    }
-    handleClickDone = (index, e) => {
-        const status = this.taskList[index].completed
-        this.taskList[index].completed = !status
-        localStorage.setItem('taskList', JSON.stringify(this.taskList))
-        this.setState({
-            taskList: this.taskList
-        })
-    }
-
-    handleEditTitle = (index, e) => {
-        this.taskList[index].title = window.prompt('Title', this.taskList[index].title)
-        localStorage.setItem('taskList', JSON.stringify(this.taskList))
-        this.setState({
-            taskList: this.taskList
-        })
-    }
-
-    handleEditDescription = (index, e) => {
-        this.taskList[index].description = window.prompt('Description', this.taskList[index].description)
-        localStorage.setItem('taskList', JSON.stringify(this.taskList))
-        this.setState({
-            taskList: this.taskList
-        })
+        this.taskList = this.props.taskList
+        this.handleTaskDelete = this.props.handleTaskDelete;
+        this.handleTaskTitleUpdate = this.props.handleTaskTitleUpdate;
+        this.handleTaskStatusUpdate = this.props.handleTaskStatusUpdate;
+        this.handleTaskDescriptionUpdate = this.props.handleTaskDescriptionUpdate;
     }
     // const taskList = JSON.parse(localStorage.getItem('taskList'))
     // taskList.sort((a, b) => {
@@ -59,13 +23,13 @@ class TaskViewer extends React.Component {
     render() {
         const tasks = []
         // debugger
-        this.state.taskList.forEach((task, index) => {
+        this.taskList.forEach((task, index) => {
             tasks.push(
                 <div className='task-item' key={`task-item-${index}`}>
                     <div className='task-item-card'>
                         <div className='task-item-title'>
                             <div>
-                                <EditIcon fontSize='small' onClick={(e) => this.handleEditTitle(index, e)}></EditIcon>
+                                <EditIcon fontSize='small' onClick={(e) => this.handleTaskTitleUpdate(index, e)}></EditIcon>
                             </div>
                             <div>
                                 {task.title}
@@ -73,7 +37,7 @@ class TaskViewer extends React.Component {
                         </div>
                         <div className='task-item-description'>
                             <div>
-                                <EditIcon fontSize='small' onClick={(e) => this.handleEditDescription(index, e)}></EditIcon>
+                                <EditIcon fontSize='small' onClick={(e) => this.handleTaskDescriptionUpdate(index, e)}></EditIcon>
                             </div>
                             <div>
                                 {task.description}
@@ -85,9 +49,9 @@ class TaskViewer extends React.Component {
                     </div>
                     <div className='task-item-option'>
                         <Button size='small' variant='outlined' color='primary'
-                                onClick={(e) => this.handleClickDone(index, e)}>Done</Button>
+                                onClick={(e) => this.handleTaskStatusUpdate(index, e)}>Done</Button>
                         <Button size='small' variant='outlined' color='secondary'
-                                onClick={(e) => this.handleClickDelete(index, e)}>Delete</Button>
+                                onClick={(e) => this.handleTaskDelete(index, e)}>Delete</Button>
                     </div>
                 </div>
             )
