@@ -34,15 +34,15 @@ class TodoAdd extends React.Component {
     })
   }
 
-  handleUpdateTitle = title => {
+  handleUpdateTitle = event => {
     this.setState({
-      title: title
+      title: event.target.value
     })
   }
 
-  handleUpdateDescription = description => {
+  handleUpdateDescription = (event) => {
     this.setState({
-      description: description
+      description: event.target.value
     })
   }
 
@@ -72,7 +72,7 @@ class TodoAdd extends React.Component {
               margin="dense"
               id="title"
               label="Title"
-              onChange={e => this.handleUpdateTitle(e.target.value)}
+              onChange={this.handleUpdateTitle}
               fullWidth
             />
             <TextField
@@ -81,7 +81,7 @@ class TodoAdd extends React.Component {
               label="Description"
               multiline
               rows={4}
-              onChange={e => this.handleUpdateDescription(e.target.value)}
+              onChange={this.handleUpdateDescription}
               fullWidth
             />
           </DialogContent>

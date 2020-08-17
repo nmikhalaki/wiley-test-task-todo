@@ -21,7 +21,8 @@ class TodoFilter extends React.Component {
     }
   }
 
-  handleChooseFilter = (filter) => {
+  handleChooseFilter = (event) => {
+    const filter = event.target.value
     this.props.setVisibilityFilter(filter)
     this.setState({
       filter: filter
@@ -34,7 +35,7 @@ class TodoFilter extends React.Component {
         <Select
           id="filter-todo-list"
           value={this.state.filter}
-          onChange={e => this.handleChooseFilter(e.target.value)}
+          onChange={this.handleChooseFilter}
         >
           <MenuItem value={SHOW_ALL}>Show All</MenuItem>
           <MenuItem value={SHOW_ACTIVE}>Show Active</MenuItem>
