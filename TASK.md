@@ -3,7 +3,7 @@
 Write a ToDo web application without a server.
 
 The Application should provide the following functionality:
-* Add a task with title + 
+* Add a task with title
 * Task list is sorted in reverse order by the task title
 * Edit a task
 * Mark a task as completed

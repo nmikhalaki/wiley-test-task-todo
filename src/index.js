@@ -1,27 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './reset.css';
-import './index.css';
-import App from './App';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import App from './components/App/App';
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import reducers from './reducers'
 import * as serviceWorker from './serviceWorker';
-import taskList from './state';
 
-if (!localStorage.getItem('taskList')) {
-    const tasks = []
-    taskList.forEach((task, index) => {
-        tasks.push(task)
-    })
-    localStorage.setItem('taskList', JSON.stringify(tasks))
-}
+
+const store = createStore(reducers)
+// console.log(store.getState());
+const unsubscribe = store.subscribe(() => console.log(store.getState()))
+// store.dispatch(addTodo('#4 task', 'dfddl;af sdkfsdlkf'))
+// store.dispatch(deleteTodo(0))
+// unsubscribe()
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
+    <CssBaseline></CssBaseline>
+    <Header />
     <App />
-  </React.StrictMode>,
+    <Footer />
+  </Provider>,
   document.getElementById('root')
 );
 
+serviceWorker.unregister();
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
