@@ -13,7 +13,7 @@ import * as serviceWorker from './serviceWorker'
 const persistedState = localStorage.getItem('reduxState') ? JSON.parse(localStorage.getItem('reduxState')) : {}
 const store = createStore(reducers, persistedState,)
 const unsubscribe = store.subscribe(() => {
-  console.log(store.getState())
+  // console.log(store.getState())
   localStorage.setItem('reduxState', JSON.stringify(store.getState()))
 })
 // unsubscribe()
@@ -22,7 +22,7 @@ ReactDOM.render(
   <Provider store={store}>
     <CssBaseline />
     <Header/>
-    <App/>
+    <App />
     <Footer/>
   </Provider>,
   document.getElementById('root')
