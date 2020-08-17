@@ -33,7 +33,7 @@ function App() {
                 <TodoAdd />
               </div>
               <div className="todo-items-container">
-                <TodoList></TodoList>
+                <TodoList />
               </div>
             </main>
           </Paper>

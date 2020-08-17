@@ -28,7 +28,7 @@ class TodoSort extends React.Component {
   render() {
     return (
       <div>
-        <Button onClick={this.handleChangeSortOrder} className={this.state.sortBtn}><SortIcon></SortIcon></Button>
+        <Button onClick={this.handleChangeSortOrder} className={this.state.sortBtn}><SortIcon /></Button>
       </div>
     )
   }

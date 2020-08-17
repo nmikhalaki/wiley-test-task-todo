@@ -20,7 +20,7 @@ const unsubscribe = store.subscribe(() => {
 
 ReactDOM.render(
   <Provider store={store}>
-    <CssBaseline></CssBaseline>
+    <CssBaseline />
     <Header/>
     <App/>
     <Footer/>

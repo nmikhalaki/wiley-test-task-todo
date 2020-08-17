@@ -62,7 +62,7 @@ class TodoAdd extends React.Component {
     return (
       <div>
         <Button onClick={this.handleClickAdd}>
-          <AddCircleOutlineIcon></AddCircleOutlineIcon>
+          <AddCircleOutlineIcon />
         </Button>
         <Dialog open={this.state.open} onClose={this.handleClickCancel} aria-labelledby="form-dialog-title">
           <DialogTitle id="form-dialog-title">Create New Todo</DialogTitle>
