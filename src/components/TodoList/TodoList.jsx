@@ -5,7 +5,8 @@ import './todoList.css'
 
 
 const TodoList = (props) => {
-  return props.todos.map(todo => {
+  const todos = props.todos.sort((a, b) => (a.title < b.title) ? 1 : -1)
+  return todos.map(todo => {
     return <TodoItem todo={todo} key={`todo-${todo.id}`}/>
   })
 }
