@@ -1,5 +1,4 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid'
 import './header.css';
 
 const Header = () => {
@@ -7,9 +6,9 @@ const Header = () => {
         <header className='header'>
             <nav>
                 <ol>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#Home">Home</a></li>
+                    <li><a href="#About">About</a></li>
+                    <li><a href="#Contact">Contact</a></li>
                 </ol>
             </nav>
         </header>

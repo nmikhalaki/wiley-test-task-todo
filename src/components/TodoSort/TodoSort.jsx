@@ -1,21 +1,26 @@
 import React from 'react'
-import './todoSort.css'
 import SortIcon from '@material-ui/icons/Sort'
 import {Button} from '@material-ui/core'
+import {connect} from 'react-redux'
+import {setSortOrder} from '../../actions'
+import {
+  SORT_DESC,
+  SORT_ASC,
+} from '../../constants/SortTypes'
+import './todoSort.css'
 
 class TodoSort extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sortOrder: this.props.sortOrder,
-      sortBy: this.props.sortBy,
-      sortBtn: 'todo-sort-button-desc'
+      sortBtn: this.props.visibilitySettings.sortOrder === SORT_ASC ? 'todo-sort-button-asc' : 'todo-sort-button-desc'
     }
   }
 
-  handleClickSort() {
+  handleChangeSortOrder = () => {
+    this.props.setSortOrder(this.props.visibilitySettings.sortOrder === SORT_DESC ? SORT_ASC : SORT_DESC)
     this.setState({
-        sortBtn: this.state.sortBtn == 'todo-sort-button-desc' ? 'todo-sort-button-asc' : 'todo-sort-button-desc'
+        sortBtn: this.state.sortBtn === 'todo-sort-button-asc' ? 'todo-sort-button-desc' : 'todo-sort-button-asc'
       }
     )
   }
@@ -23,10 +28,18 @@ class TodoSort extends React.Component {
   render() {
     return (
       <div>
-        <Button onClick={() => this.handleClickSort()} className={this.state.sortBtn}><SortIcon></SortIcon></Button>
+        <Button onClick={this.handleChangeSortOrder} className={this.state.sortBtn}><SortIcon></SortIcon></Button>
       </div>
     )
   }
 }
 
-export default TodoSort
+const mapStateToProps = state => {
+  const {visibilitySettings} = state
+  return {visibilitySettings};
+}
+
+export default connect(
+  mapStateToProps,
+  {setSortOrder}
+)(TodoSort)

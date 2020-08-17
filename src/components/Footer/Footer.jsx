@@ -1,5 +1,5 @@
-import React from "react";
-import './footer.css';
+import React from 'react'
+import './footer.css'
 
 const Footer = (props) => {
     const currentDate = new Date()
@@ -11,4 +11,4 @@ const Footer = (props) => {
     )
 }
 
-export default Footer;
+export default Footer

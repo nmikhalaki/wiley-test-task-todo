@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
 import {connect} from 'react-redux'
-import {addTodo, deleteTodo} from '../../actions/index'
+import {addTodo} from '../../actions/index'
 
 class TodoAdd extends React.Component {
   constructor(props) {
@@ -98,8 +98,6 @@ class TodoAdd extends React.Component {
     )
   }
 }
-
-// export default TodoAdd
 
 export default connect(
   null,

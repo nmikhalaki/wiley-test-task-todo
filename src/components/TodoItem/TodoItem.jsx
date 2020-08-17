@@ -16,7 +16,9 @@ import EditIcon from '@material-ui/icons/Edit'
 import DoneIcon from '@material-ui/icons/Done'
 import DeleteIcon from '@material-ui/icons/Delete'
 import {
+  addTodo,
   editTodo,
+  deleteTodo,
   completeTodo
 } from '../../actions'
 import './todoItem.css'
@@ -66,11 +68,12 @@ class TodoItem extends React.Component {
     });
   }
 
+  handleDelete = () => {
+    this.props.deleteTodo(this.props.todo.id)
+  }
+
   handleDone = () => {
-    this.props.completeTodo(this.state.id)
-    this.setState({
-      completed: this.state.completed ? false: true
-    });
+    this.props.completeTodo(this.props.todo.id)
   }
 
   render() {
@@ -78,23 +81,23 @@ class TodoItem extends React.Component {
       <Card variant="outlined">
         <CardContent>
           <Typography variant="h6" component="h2">
-            {this.state.title}
+            {this.props.todo.title}
           </Typography>
           <Typography variant="body2" component="p">
-            {this.state.description}
+            {this.props.todo.description}
           </Typography>
         </CardContent>
         <CardActions style={{justifyContent: 'center'}}>
-          <Typography variant="body2" component="p">Completed: {this.state.completed.toString()}</Typography>
+          <Typography variant="body2" component="p">Completed: {this.props.todo.completed.toString()}</Typography>
           <Button onClick={() => this.handleDone()} size="small"><DoneIcon></DoneIcon></Button>
           <Button onClick={() => this.handleClickEdit()} size="small"><EditIcon></EditIcon></Button>
-          <Button onClick={() => this.props.handleDelete(this.state.id)} size="small"><DeleteIcon></DeleteIcon></Button>
+          <Button onClick={() => this.handleDelete()} size="small"><DeleteIcon></DeleteIcon></Button>
         </CardActions>
         <Dialog open={this.state.open} onClose={this.handleClickCancel} aria-labelledby="form-dialog-title">
           <DialogTitle id="form-dialog-title">Edit Todo</DialogTitle>
           <DialogContent>
             <TextField
-              defaultValue={this.state.title}
+              defaultValue={this.props.todo.title}
               autoFocus
               margin="dense"
               id="title"
@@ -103,7 +106,7 @@ class TodoItem extends React.Component {
               fullWidth
             />
             <TextField
-              defaultValue={this.state.description}
+              defaultValue={this.props.todo.description}
               margin="dense"
               id="description"
               label="Description"
@@ -130,7 +133,9 @@ class TodoItem extends React.Component {
 export default connect(
   null,
   {
+    addTodo,
     editTodo,
+    deleteTodo,
     completeTodo,
   }
 )(TodoItem)

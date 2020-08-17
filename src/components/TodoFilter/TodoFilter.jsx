@@ -9,17 +9,20 @@ import {
   SHOW_ACTIVE,
   SHOW_COMPLETED,
 } from '../../constants/FilterTypes'
+import {connect} from 'react-redux'
+import {setVisibilityFilter} from '../../actions'
 
 
 class TodoFilter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filter: this.props.filter
+      filter: this.props.visibilitySettings.filter
     }
   }
 
-  handleChooseFilter(filter) {
+  handleChooseFilter = (filter) => {
+    this.props.setVisibilityFilter(filter)
     this.setState({
       filter: filter
     })
@@ -42,4 +45,12 @@ class TodoFilter extends React.Component {
   }
 }
 
-export default TodoFilter
+const mapStateToProps = state => {
+  const {visibilitySettings} = state
+  return {visibilitySettings};
+}
+
+export default connect(
+  mapStateToProps,
+  {setVisibilityFilter}
+)(TodoFilter)

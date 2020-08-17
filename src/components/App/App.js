@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import TodoList from '../TodoList/TodoList'
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App(props) {
+function App() {
   const classes = useStyles();
   return (
     <>
@@ -27,7 +27,14 @@ function App(props) {
         <Grid item xs={6}>
           <Paper className={classes.paper}>
             <main className="main-container">
-              <TodoList></TodoList>
+              <div className="todo-options-container">
+                <TodoSort />
+                <TodoFilter />
+                <TodoAdd />
+              </div>
+              <div className="todo-items-container">
+                <TodoList></TodoList>
+              </div>
             </main>
           </Paper>
         </Grid>
