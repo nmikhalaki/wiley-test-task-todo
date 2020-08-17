@@ -7,7 +7,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-} from '@material-ui/core';
+} from '@material-ui/core'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
 import {connect} from 'react-redux'
 import {addTodo} from '../../actions/index'
@@ -31,31 +31,31 @@ class TodoAdd extends React.Component {
   handleClickCancel = () => {
     this.setState({
       open: false
-    });
-  };
+    })
+  }
 
   handleUpdateTitle = title => {
     this.setState({
       title: title
-    });
-  };
+    })
+  }
 
   handleUpdateDescription = description => {
     this.setState({
       description: description
-    });
-  };
+    })
+  }
 
   handleAddTodo = () => {
     this.props.addTodo({
       title: this.state.title,
       description: this.state.description
-    });
+    })
     this.setState({
       title: '',
       description: '',
       open: false
-    });
+    })
   };
 
   render() {
