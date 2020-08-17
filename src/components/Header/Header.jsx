@@ -6,9 +6,9 @@ const Header = () => {
         <header className='header'>
             <nav>
                 <ol>
-                    <li><a href="#Home">Home</a></li>
-                    <li><a href="#About">About</a></li>
-                    <li><a href="#Contact">Contact</a></li>
+                    <li><a className="link" href="#Home">Home</a></li>
+                    <li><a className="link" href="#About">About</a></li>
+                    <li><a className="link" href="#Contact">Contact</a></li>
                 </ol>
             </nav>
         </header>
