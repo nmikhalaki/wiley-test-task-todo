@@ -7,6 +7,10 @@ import TodoFilter from '../TodoFilter/TodoFilter'
 import TodoSort from '../TodoSort/TodoSort'
 import TodoAdd from '../TodoAdd/TodoAdd'
 import {SORT_ASC} from '../../constants/SortTypes'
+import {
+  SHOW_ACTIVE,
+  SHOW_COMPLETED,
+} from '../../constants/FilterTypes'
 import {connect} from 'react-redux'
 import './app.css'
 
@@ -50,6 +54,8 @@ const mapStateToProps = state => {
   visibilitySettings.sortOrder === SORT_ASC ?
     todos.sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1) :
     todos.sort((a, b) => (a.title.toLowerCase() < b.title.toLowerCase()) ? 1 : -1)
+  visibilitySettings.filter === SHOW_ACTIVE && todos.filter(todo => !todo.completed)
+  visibilitySettings.filter === SHOW_COMPLETED && todos.filter(todo => todo.completed)
   return {todos, visibilitySettings}
 }
 
