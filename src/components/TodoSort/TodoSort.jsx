@@ -8,22 +8,24 @@ import {
 } from '../../constants/SortTypes'
 import './todoSort.css'
 
-const TodoSort = (props) => {
+const TodoSort = ({visibility, setSortOrder}) => {
   let className
+  if (visibility.sortOrder === SORT_ASC) {
+    className = 'todo-sort-button-asc'
+  }
+  if (visibility.sortOrder === SORT_DESC) {
+    className = 'todo-sort-button-desc'
+  }
+  const handleClick = () => {
+    setSortOrder(visibility.sortOrder === SORT_ASC ? SORT_DESC: SORT_ASC)
+  }
   return (
     <div>
       <Button
-        onClick={() => {
-          const sortOrder = props.visibility.sortOrder === SORT_ASC ? SORT_DESC : SORT_ASC
-          props.setSortOrder(sortOrder)
-          if (sortOrder === SORT_ASC) {
-            className = '.todo-sort-button-asc'
-          }
-          if (sortOrder === SORT_DESC) {
-            className = '.todo-sort-button-desc'
-          }
-        }}
-        className={className}><SortIcon/></Button>
+        onClick={handleClick}
+        className={className}>
+        <SortIcon/>
+      </Button>
     </div>
   )
 }

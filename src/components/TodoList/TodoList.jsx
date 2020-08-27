@@ -103,7 +103,7 @@ class TodoList extends React.Component {
 }
 
 TodoList.propTypes = {
-  todos: PropTypes.array.isRequired,
+  todos: PropTypes.arrayOf(Object).isRequired,
   editTodo: PropTypes.func.isRequired,
   deleteTodo: PropTypes.func.isRequired,
   completeTodo: PropTypes.func.isRequired,

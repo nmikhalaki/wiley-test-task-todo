@@ -8,7 +8,6 @@ import {
   DialogContent,
   DialogTitle,
 } from '@material-ui/core'
-import TodoAdd from "../TodoAdd/TodoAdd";
 
 
 const TodoDialog = (props) => {

@@ -65,6 +65,17 @@ function App(props) {
   );
 }
 
+App.propTypes = {
+  todos: PropTypes.arrayOf(Object).isRequired,
+  visibility: PropTypes.object.isRequired,
+  addTodo: PropTypes.func.isRequired,
+  editTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
+  completeTodo: PropTypes.func.isRequired,
+  setSortOrder: PropTypes.func.isRequired,
+  setVisibilityFilter: PropTypes.func.isRequired,
+}
+
 const mapStateToProps = state => {
   let {todos, visibility} = state
   if (visibility.filter === SHOW_ACTIVE) {
