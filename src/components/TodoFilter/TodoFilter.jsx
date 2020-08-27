@@ -35,4 +35,8 @@ const TodoFilter = (props) => {
   )
 }
 
+TodoFilter.propTypes = {
+  setVisibilityFilter: PropTypes.func.isRequired
+}
+
 export default TodoFilter

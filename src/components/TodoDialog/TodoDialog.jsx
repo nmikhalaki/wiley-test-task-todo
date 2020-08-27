@@ -8,6 +8,7 @@ import {
   DialogContent,
   DialogTitle,
 } from '@material-ui/core'
+import TodoAdd from "../TodoAdd/TodoAdd";
 
 
 const TodoDialog = (props) => {
@@ -41,6 +42,15 @@ const TodoDialog = (props) => {
       </DialogActions>
     </Dialog>
   )
+}
+
+TodoDialog.propTypes = {
+  open: PropTypes.bool.isRequired,
+  todo: PropTypes.object.isRequired,
+  handleUpdateTitle: PropTypes.func.isRequired,
+  handleUpdateDescription: PropTypes.func.isRequired,
+  handleClickSave: PropTypes.func.isRequired,
+  handleClickCancel: PropTypes.func.isRequired,
 }
 
 export default TodoDialog

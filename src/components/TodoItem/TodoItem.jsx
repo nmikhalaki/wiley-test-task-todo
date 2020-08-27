@@ -32,4 +32,11 @@ const TodoItem = (props) => (
   </Card>
 )
 
+TodoItem.propTypes = {
+  todo: PropTypes.object.isRequired,
+  handleClickDone: PropTypes.func.isRequired,
+  handleClickEdit: PropTypes.func.isRequired,
+  handleClickDelete: PropTypes.func.isRequired,
+}
+
 export default TodoItem

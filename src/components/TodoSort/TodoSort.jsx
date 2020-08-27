@@ -28,4 +28,9 @@ const TodoSort = (props) => {
   )
 }
 
+TodoSort.propTypes = {
+  visibility: PropTypes.object.isRequired,
+  setSortOrder: PropTypes.func.isRequired,
+}
+
 export default TodoSort

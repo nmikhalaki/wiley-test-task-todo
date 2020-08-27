@@ -79,4 +79,8 @@ class TodoAdd extends React.Component {
   }
 }
 
+TodoAdd.propTypes = {
+  addTodo: PropTypes.func.isRequired,
+}
+
 export default TodoAdd
