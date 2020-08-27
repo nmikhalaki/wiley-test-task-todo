@@ -1,23 +1,21 @@
 import React from 'react'
-import './todoAdd.css'
-import {
-  Button,
-  TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from '@material-ui/core'
+import TodoDialog from '../TodoDialog/TodoDialog'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
+import {
+  Button
+} from '@material-ui/core'
 import {connect} from 'react-redux'
 import {addTodo} from '../../actions/index'
+import './todoAdd.css'
 
 class TodoAdd extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      description: '',
+      todo: {
+        title: undefined,
+        description: undefined,
+      },
       open: false
     }
   }
@@ -34,66 +32,49 @@ class TodoAdd extends React.Component {
     })
   }
 
-  handleUpdateTitle = event => {
+  handleUpdateTitle = title => {
     this.setState({
-      title: event.target.value
+      todo: {
+        ...this.state.todo,
+        title: title
+      }
     })
   }
 
-  handleUpdateDescription = (event) => {
+  handleUpdateDescription = (description) => {
     this.setState({
-      description: event.target.value
+      todo: {
+        ...this.state.todo,
+        description: description
+      }
     })
   }
 
-  handleAddTodo = () => {
-    this.props.addTodo({
-      title: this.state.title,
-      description: this.state.description
-    })
+  handleClickSave = () => {
+    this.props.addTodo({...this.state.todo})
     this.setState({
-      title: '',
-      description: '',
+      todo: {
+        title: undefined,
+        description: undefined,
+      },
       open: false
     })
-  };
+  }
 
   render() {
     return (
       <div>
         <Button onClick={this.handleClickAdd}>
-          <AddCircleOutlineIcon />
+          <AddCircleOutlineIcon/>
         </Button>
-        <Dialog open={this.state.open} onClose={this.handleClickCancel} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Create New Todo</DialogTitle>
-          <DialogContent>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="title"
-              label="Title"
-              onChange={this.handleUpdateTitle}
-              fullWidth
-            />
-            <TextField
-              margin="dense"
-              id="description"
-              label="Description"
-              multiline
-              rows={4}
-              onChange={this.handleUpdateDescription}
-              fullWidth
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClickCancel} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.handleAddTodo} color="primary">
-              Save
-            </Button>
-          </DialogActions>
-        </Dialog>
+        <TodoDialog
+          open={this.state.open}
+          todo={this.state.todo}
+          handleClickSave={this.handleClickSave}
+          handleClickCancel={this.handleClickCancel}
+          handleUpdateTitle={this.handleUpdateTitle}
+          handleUpdateDescription={this.handleUpdateDescription}
+        />
       </div>
     )
   }

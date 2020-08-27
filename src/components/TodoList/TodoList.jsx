@@ -1,14 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {
-  Button,
-  TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from '@material-ui/core'
 import TodoItem from '../TodoItem/TodoItem'
+import TodoDialog from '../TodoDialog/TodoDialog'
 import {
   editTodo,
   deleteTodo,
@@ -101,38 +94,14 @@ class TodoList extends React.Component {
             )
           )
         }
-        <Dialog open={this.state.open} onClose={this.handleClickCancel} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Edit Todo</DialogTitle>
-          <DialogContent>
-            <TextField
-              defaultValue={this.state.todo.title}
-              autoFocus
-              margin="dense"
-              id="title"
-              label="Title"
-              onChange={e => this.handleUpdateTitle(e.target.value)}
-              fullWidth
-            />
-            <TextField
-              defaultValue={this.state.todo.description}
-              margin="dense"
-              id="description"
-              label="Description"
-              multiline
-              rows={4}
-              onChange={e => this.handleUpdateDescription(e.target.value)}
-              fullWidth
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClickCancel} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.handleClickSave} color="primary">
-              Save
-            </Button>
-          </DialogActions>
-        </Dialog>
+        <TodoDialog
+          open={this.state.open}
+          todo={this.state.todo}
+          handleClickSave={this.handleClickSave}
+          handleClickCancel={this.handleClickCancel}
+          handleUpdateTitle={this.handleUpdateTitle}
+          handleUpdateDescription={this.handleUpdateDescription}
+        />
       </>
     )
   }
