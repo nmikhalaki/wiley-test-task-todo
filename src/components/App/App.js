@@ -2,16 +2,26 @@ import React from 'react'
 import {makeStyles} from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
-import TodoList from '../TodoList/TodoList'
 import TodoFilter from '../TodoFilter/TodoFilter'
 import TodoSort from '../TodoSort/TodoSort'
+import TodoList from '../TodoList/TodoList'
 import TodoAdd from '../TodoAdd/TodoAdd'
-import {SORT_ASC} from '../../constants/SortTypes'
 import {
   SHOW_ACTIVE,
   SHOW_COMPLETED,
 } from '../../constants/FilterTypes'
+import {
+  SORT_ASC
+} from '../../constants/SortTypes'
 import {connect} from 'react-redux'
+import {
+  addTodo,
+  editTodo,
+  deleteTodo,
+  completeTodo,
+  setSortOrder,
+  setVisibilityFilter,
+} from '../../actions'
 import './app.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App({todos}) {
+function App(props) {
   const classes = useStyles();
   return (
     <>
@@ -34,12 +44,17 @@ function App({todos}) {
           <Paper className={classes.paper}>
             <main className="main-container">
               <div className="todo-options-container">
-                <TodoSort />
-                <TodoFilter />
-                <TodoAdd />
+                <TodoSort visibilitySettings={props.visibilitySettings} setSortOrder={props.setSortOrder}/>
+                <TodoFilter visibilitySettings={props.visibilitySettings} setVisibilityFilter={props.setVisibilityFilter}/>
+                <TodoAdd addTodo={props.addTodo}/>
               </div>
               <div className="todo-items-container">
-                <TodoList todos={todos}/>
+                <TodoList
+                  todos={props.todos}
+                  editTodo={props.editTodo}
+                  deleteTodo={props.deleteTodo}
+                  completeTodo={props.completeTodo}
+                />
               </div>
             </main>
           </Paper>
@@ -50,15 +65,29 @@ function App({todos}) {
 }
 
 const mapStateToProps = state => {
-  const {todos, visibilitySettings} = state
+  let {todos, visibilitySettings} = state
+  if (visibilitySettings.filter === SHOW_ACTIVE) {
+    todos = todos.filter(todo => !todo.completed)
+  }
+  if (visibilitySettings.filter === SHOW_COMPLETED) {
+    todos = todos.filter(todo => todo.completed)
+  }
   visibilitySettings.sortOrder === SORT_ASC ?
     todos.sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1) :
     todos.sort((a, b) => (a.title.toLowerCase() < b.title.toLowerCase()) ? 1 : -1)
-  visibilitySettings.filter === SHOW_ACTIVE && todos.filter(todo => !todo.completed)
-  visibilitySettings.filter === SHOW_COMPLETED && todos.filter(todo => todo.completed)
   return {todos, visibilitySettings}
+}
+
+const mapDispatchToProps = {
+  addTodo,
+  editTodo,
+  deleteTodo,
+  completeTodo,
+  setSortOrder,
+  setVisibilityFilter
 }
 
 export default connect(
   mapStateToProps,
+  mapDispatchToProps
 )(App)

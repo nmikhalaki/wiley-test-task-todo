@@ -1,12 +1,6 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import TodoItem from '../TodoItem/TodoItem'
 import TodoDialog from '../TodoDialog/TodoDialog'
-import {
-  editTodo,
-  deleteTodo,
-  completeTodo,
-} from '../../actions'
 import './todoList.css'
 
 class TodoList extends React.Component {
@@ -107,20 +101,4 @@ class TodoList extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const {todos} = state
-  return {todos}
-}
-
-const mapDispatchToProps = {
-  editTodo,
-  deleteTodo,
-  completeTodo,
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoList)
-
-// export default TodoList
+export default TodoList

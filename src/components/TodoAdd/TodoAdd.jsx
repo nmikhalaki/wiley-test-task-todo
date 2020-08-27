@@ -4,8 +4,6 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
 import {
   Button
 } from '@material-ui/core'
-import {connect} from 'react-redux'
-import {addTodo} from '../../actions/index'
 import './todoAdd.css'
 
 class TodoAdd extends React.Component {
@@ -51,7 +49,7 @@ class TodoAdd extends React.Component {
   }
 
   handleClickSave = () => {
-    this.props.addTodo({...this.state.todo})
+    this.props.addTodo(this.state.todo)
     this.setState({
       todo: {
         title: undefined,
@@ -80,7 +78,4 @@ class TodoAdd extends React.Component {
   }
 }
 
-export default connect(
-  null,
-  {addTodo}
-)(TodoAdd)
+export default TodoAdd
