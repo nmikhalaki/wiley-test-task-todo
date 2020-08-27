@@ -6,6 +6,8 @@ import TodoList from '../TodoList/TodoList'
 import TodoFilter from '../TodoFilter/TodoFilter'
 import TodoSort from '../TodoSort/TodoSort'
 import TodoAdd from '../TodoAdd/TodoAdd'
+import {SORT_ASC} from '../../constants/SortTypes'
+import {connect} from 'react-redux'
 import './app.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App() {
+function App({todos}) {
   const classes = useStyles();
   return (
     <>
@@ -33,7 +35,7 @@ function App() {
                 <TodoAdd />
               </div>
               <div className="todo-items-container">
-                <TodoList />
+                <TodoList todos={todos}/>
               </div>
             </main>
           </Paper>
@@ -43,4 +45,14 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  const {todos, visibilitySettings} = state
+  visibilitySettings.sortOrder === SORT_ASC ?
+    todos.sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1) :
+    todos.sort((a, b) => (a.title.toLowerCase() < b.title.toLowerCase()) ? 1 : -1)
+  return {todos, visibilitySettings}
+}
+
+export default connect(
+  mapStateToProps,
+)(App)

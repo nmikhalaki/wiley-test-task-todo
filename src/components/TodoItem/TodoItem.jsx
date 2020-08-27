@@ -16,7 +16,6 @@ import EditIcon from '@material-ui/icons/Edit'
 import DoneIcon from '@material-ui/icons/Done'
 import DeleteIcon from '@material-ui/icons/Delete'
 import {
-  addTodo,
   editTodo,
   deleteTodo,
   completeTodo
@@ -133,7 +132,6 @@ class TodoItem extends React.Component {
 export default connect(
   null,
   {
-    addTodo,
     editTodo,
     deleteTodo,
     completeTodo,
