@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {makeStyles} from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
@@ -44,8 +45,8 @@ function App(props) {
           <Paper className={classes.paper}>
             <main className="main-container">
               <div className="todo-options-container">
-                <TodoSort visibilitySettings={props.visibilitySettings} setSortOrder={props.setSortOrder}/>
-                <TodoFilter visibilitySettings={props.visibilitySettings} setVisibilityFilter={props.setVisibilityFilter}/>
+                <TodoSort visibility={props.visibility} setSortOrder={props.setSortOrder}/>
+                <TodoFilter visibility={props.visibility} setVisibilityFilter={props.setVisibilityFilter}/>
                 <TodoAdd addTodo={props.addTodo}/>
               </div>
               <div className="todo-items-container">
@@ -65,17 +66,17 @@ function App(props) {
 }
 
 const mapStateToProps = state => {
-  let {todos, visibilitySettings} = state
-  if (visibilitySettings.filter === SHOW_ACTIVE) {
+  let {todos, visibility} = state
+  if (visibility.filter === SHOW_ACTIVE) {
     todos = todos.filter(todo => !todo.completed)
   }
-  if (visibilitySettings.filter === SHOW_COMPLETED) {
+  if (visibility.filter === SHOW_COMPLETED) {
     todos = todos.filter(todo => todo.completed)
   }
-  visibilitySettings.sortOrder === SORT_ASC ?
+  visibility.sortOrder === SORT_ASC ?
     todos.sort((a, b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1) :
     todos.sort((a, b) => (a.title.toLowerCase() < b.title.toLowerCase()) ? 1 : -1)
-  return {todos, visibilitySettings}
+  return {todos, visibility}
 }
 
 const mapDispatchToProps = {

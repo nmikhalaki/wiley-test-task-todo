@@ -4,7 +4,7 @@ import visibility from './visibility'
 
 const rootReducer = combineReducers({
   todos: todos,
-  visibilitySettings: visibility
+  visibility: visibility
 })
 
 export default rootReducer

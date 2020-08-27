@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import SortIcon from '@material-ui/icons/Sort'
 import {Button} from '@material-ui/core'
 import {
@@ -13,7 +14,7 @@ const TodoSort = (props) => {
     <div>
       <Button
         onClick={() => {
-          const sortOrder = props.visibilitySettings.sortOrder === SORT_ASC ? SORT_DESC : SORT_ASC
+          const sortOrder = props.visibility.sortOrder === SORT_ASC ? SORT_DESC : SORT_ASC
           props.setSortOrder(sortOrder)
           if (sortOrder === SORT_ASC) {
             className = '.todo-sort-button-asc'

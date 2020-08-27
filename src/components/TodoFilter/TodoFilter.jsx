@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {
   Select,
   MenuItem,
@@ -12,7 +13,7 @@ import {
 
 
 const TodoFilter = (props) => {
-  let filter = props.visibilitySettings.filter
+  let filter = props.visibility.filter
 
   const handleChange = (event) => {
     filter = event.target.value
